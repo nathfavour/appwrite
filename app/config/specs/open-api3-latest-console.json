@@ -4346,7 +4346,7 @@
                 "tags": [
                     "console"
                 ],
-                "description": "",
+                "description": "Check if a resource ID is available.",
                 "responses": {
                     "204": {
                         "description": "No content"
@@ -9036,7 +9036,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Get a list of all the project's functions. You can use the query params to filter your results.",
                 "responses": {
                     "200": {
                         "description": "Functions List",
@@ -9108,7 +9108,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Create a new function. You can pass a list of [permissions](https:\/\/appwrite.io\/docs\/permissions) to allow different project users or team with access to execute the function using the client API.",
                 "responses": {
                     "201": {
                         "description": "Function",
@@ -9338,7 +9338,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Get a list of all runtimes that are currently active on your instance.",
                 "responses": {
                     "200": {
                         "description": "Runtimes List",
@@ -9386,7 +9386,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "List allowed function specifications for this instance.",
                 "responses": {
                     "200": {
                         "description": "Specifications List",
@@ -9435,7 +9435,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "List available function templates. You can use template details in [createFunction](\/docs\/references\/cloud\/server-nodejs\/functions#create) method.",
                 "responses": {
                     "200": {
                         "description": "Function Templates List",
@@ -9534,7 +9534,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Get a function template using ID. You can use template details in [createFunction](\/docs\/references\/cloud\/server-nodejs\/functions#create) method.",
                 "responses": {
                     "200": {
                         "description": "Template Function",
@@ -9593,7 +9593,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Get usage metrics and statistics for all functions in the project. View statistics including total deployments, builds, logs, storage usage, and compute time. The response includes both current totals and historical data for each metric. Use the optional range parameter to specify the time window for historical data: 24h (last 24 hours), 30d (last 30 days), or 90d (last 90 days). If not specified, defaults to 30 days.",
                 "responses": {
                     "200": {
                         "description": "UsageFunctions",
@@ -9664,7 +9664,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Get a function by its unique ID.",
                 "responses": {
                     "200": {
                         "description": "Function",
@@ -9722,7 +9722,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Update function by its unique ID.",
                 "responses": {
                     "200": {
                         "description": "Function",
@@ -9956,7 +9956,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Delete a function by its unique ID.",
                 "responses": {
                     "204": {
                         "description": "No content"
@@ -10009,7 +10009,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Update the function active deployment. Use this endpoint to switch the code deployment that should be used when visitor opens your function.",
                 "responses": {
                     "200": {
                         "description": "Function",
@@ -10088,7 +10088,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Get a list of all the function's code deployments. You can use the query params to filter your results.",
                 "responses": {
                     "200": {
                         "description": "Deployments List",
@@ -10170,7 +10170,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Create a new function code deployment. Use this endpoint to upload a new version of your code function. To execute your newly uploaded code, you'll need to update the function's deployment to use your new deployment UID.\n\nThis endpoint accepts a tar.gz file compressed with your code. Make sure to include any dependencies your code has within the compressed file. You can learn more about code packaging in the [Appwrite Cloud Functions tutorial](https:\/\/appwrite.io\/docs\/functions).\n\nUse the \"command\" param to set the entrypoint used to execute your code.",
                 "responses": {
                     "202": {
                         "description": "Deployment",
@@ -10265,7 +10265,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Create a new build for an existing function deployment. This endpoint allows you to rebuild a deployment with the updated function configuration, including its entrypoint and build commands if they have been modified. The build process will be queued and executed asynchronously. The original deployment's code will be preserved and used for the new build.",
                 "responses": {
                     "202": {
                         "description": "Deployment",
@@ -10349,7 +10349,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Create a deployment based on a template.\n\nUse this endpoint with combination of [listTemplates](https:\/\/appwrite.io\/docs\/server\/functions#listTemplates) to find the template details.",
                 "responses": {
                     "202": {
                         "description": "Deployment",
@@ -10451,7 +10451,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Create a deployment when a function is connected to VCS.\n\nThis endpoint lets you create deployment from a branch, commit, or a tag.",
                 "responses": {
                     "202": {
                         "description": "Deployment",
@@ -10547,7 +10547,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Get a function deployment by its unique ID.",
                 "responses": {
                     "200": {
                         "description": "Deployment",
@@ -10615,7 +10615,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Delete a code deployment by its unique ID.",
                 "responses": {
                     "204": {
                         "description": "No content"
@@ -10678,7 +10678,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Get a function deployment content by its unique ID. The endpoint response return with a 'Content-Disposition: attachment' header that tells the browser to start downloading the file to user downloads directory.",
                 "responses": {
                     "200": {
                         "description": "File"
@@ -10760,7 +10760,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Cancel an ongoing function deployment build. If the build is already in progress, it will be stopped and marked as canceled. If the build hasn't started yet, it will be marked as canceled without executing. You cannot cancel builds that have already completed (status 'ready') or failed. The response includes the final build status and details.",
                 "responses": {
                     "200": {
                         "description": "Deployment",
@@ -10830,7 +10830,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Get a list of all the current user function execution logs. You can use the query params to filter your results.",
                 "responses": {
                     "200": {
                         "description": "Executions List",
@@ -10904,7 +10904,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Trigger a function execution. The returned object will return you the current execution status. You can ping the `Get Execution` endpoint to get updates on the current execution status. Once this endpoint is called, your function execution process will start asynchronously.",
                 "responses": {
                     "201": {
                         "description": "Execution",
@@ -11018,7 +11018,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Get a function execution log by its unique ID.",
                 "responses": {
                     "200": {
                         "description": "Execution",
@@ -11089,7 +11089,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Delete a function execution by its unique ID.",
                 "responses": {
                     "204": {
                         "description": "No content"
@@ -11152,7 +11152,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Get usage metrics and statistics for a for a specific function. View statistics including total deployments, builds, executions, storage usage, and compute time. The response includes both current totals and historical data for each metric. Use the optional range parameter to specify the time window for historical data: 24h (last 24 hours), 30d (last 30 days), or 90d (last 90 days). If not specified, defaults to 30 days.",
                 "responses": {
                     "200": {
                         "description": "UsageFunction",
@@ -11233,7 +11233,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Get a list of all variables of a specific function.",
                 "responses": {
                     "200": {
                         "description": "Variables List",
@@ -11291,7 +11291,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Create a new function environment variable. These variables can be accessed in the function at runtime as environment variables.",
                 "responses": {
                     "201": {
                         "description": "Variable",
@@ -11381,7 +11381,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Get a variable by its unique ID.",
                 "responses": {
                     "200": {
                         "description": "Variable",
@@ -11449,7 +11449,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Update variable by its unique ID.",
                 "responses": {
                     "200": {
                         "description": "Variable",
@@ -11546,7 +11546,7 @@
                 "tags": [
                     "functions"
                 ],
-                "description": "",
+                "description": "Delete a variable by its unique ID.",
                 "responses": {
                     "204": {
                         "description": "No content"
@@ -24101,7 +24101,7 @@
                 "tags": [
                     "proxy"
                 ],
-                "description": "",
+                "description": "Create a new proxy rule for serving Appwrite's API on custom domain.",
                 "responses": {
                     "201": {
                         "description": "Rule",
@@ -24167,7 +24167,7 @@
                 "tags": [
                     "proxy"
                 ],
-                "description": "",
+                "description": "Create a new proxy rule for executing Appwrite Function on custom domain.",
                 "responses": {
                     "201": {
                         "description": "Rule",
@@ -24244,7 +24244,7 @@
                 "tags": [
                     "proxy"
                 ],
-                "description": "",
+                "description": "Create a new proxy rule for to redirect from custom domain to another domain.",
                 "responses": {
                     "201": {
                         "description": "Rule",
@@ -24335,7 +24335,7 @@
                 "tags": [
                     "proxy"
                 ],
-                "description": "",
+                "description": "Create a new proxy rule for serving Appwrite Site on custom domain.",
                 "responses": {
                     "201": {
                         "description": "Rule",
@@ -24580,7 +24580,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Get a list of all the project's sites. You can use the query params to filter your results.",
                 "responses": {
                     "200": {
                         "description": "Sites List",
@@ -24649,7 +24649,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Create a new site.",
                 "responses": {
                     "201": {
                         "description": "Site",
@@ -24894,7 +24894,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Get a list of all frameworks that are currently available on the server instance.",
                 "responses": {
                     "200": {
                         "description": "Frameworks List",
@@ -24942,7 +24942,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "List allowed site specifications for this instance.",
                 "responses": {
                     "200": {
                         "description": "Specifications List",
@@ -24991,7 +24991,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "List available site templates. You can use template details in [createSite](\/docs\/references\/cloud\/server-nodejs\/sites#create) method.",
                 "responses": {
                     "200": {
                         "description": "Site Templates List",
@@ -25090,7 +25090,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Get a site template using ID. You can use template details in [createSite](\/docs\/references\/cloud\/server-nodejs\/sites#create) method.",
                 "responses": {
                     "200": {
                         "description": "Template Site",
@@ -25149,7 +25149,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Get usage metrics and statistics for all sites in the project. View statistics including total deployments, builds, logs, storage usage, and compute time. The response includes both current totals and historical data for each metric. Use the optional range parameter to specify the time window for historical data: 24h (last 24 hours), 30d (last 30 days), or 90d (last 90 days). If not specified, defaults to 30 days.",
                 "responses": {
                     "200": {
                         "description": "UsageSites",
@@ -25220,7 +25220,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Get a site by its unique ID.",
                 "responses": {
                     "200": {
                         "description": "Site",
@@ -25278,7 +25278,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Update site by its unique ID.",
                 "responses": {
                     "200": {
                         "description": "Site",
@@ -25526,7 +25526,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Delete a site by its unique ID.",
                 "responses": {
                     "204": {
                         "description": "No content"
@@ -25579,7 +25579,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Update the site active deployment. Use this endpoint to switch the code deployment that should be used when visitor opens your site.",
                 "responses": {
                     "200": {
                         "description": "Site",
@@ -25658,7 +25658,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Get a list of all the site's code deployments. You can use the query params to filter your results.",
                 "responses": {
                     "200": {
                         "description": "Deployments List",
@@ -25740,7 +25740,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Create a new site code deployment. Use this endpoint to upload a new version of your site code. To activate your newly uploaded code, you'll need to update the function's deployment to use your new deployment ID.",
                 "responses": {
                     "202": {
                         "description": "Deployment",
@@ -25840,7 +25840,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Create a new build for an existing site deployment. This endpoint allows you to rebuild a deployment with the updated site configuration, including its commands and output directory if they have been modified. The build process will be queued and executed asynchronously. The original deployment's code will be preserved and used for the new build.",
                 "responses": {
                     "202": {
                         "description": "Deployment",
@@ -25919,7 +25919,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Create a deployment based on a template.\n\nUse this endpoint with combination of [listTemplates](https:\/\/appwrite.io\/docs\/server\/sites#listTemplates) to find the template details.",
                 "responses": {
                     "202": {
                         "description": "Deployment",
@@ -26021,7 +26021,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Create a deployment when a site is connected to VCS.\n\nThis endpoint lets you create deployment from a branch, commit, or a tag.",
                 "responses": {
                     "202": {
                         "description": "Deployment",
@@ -26118,7 +26118,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Get a site deployment by its unique ID.",
                 "responses": {
                     "200": {
                         "description": "Deployment",
@@ -26186,7 +26186,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Delete a site deployment by its unique ID.",
                 "responses": {
                     "204": {
                         "description": "No content"
@@ -26249,7 +26249,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Get a site deployment content by its unique ID. The endpoint response return with a 'Content-Disposition: attachment' header that tells the browser to start downloading the file to user downloads directory.",
                 "responses": {
                     "200": {
                         "description": "File"
@@ -26331,7 +26331,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Cancel an ongoing site deployment build. If the build is already in progress, it will be stopped and marked as canceled. If the build hasn't started yet, it will be marked as canceled without executing. You cannot cancel builds that have already completed (status 'ready') or failed. The response includes the final build status and details.",
                 "responses": {
                     "200": {
                         "description": "Deployment",
@@ -26401,7 +26401,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Get a list of all site logs. You can use the query params to filter your results.",
                 "responses": {
                     "200": {
                         "description": "Executions List",
@@ -26471,7 +26471,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Get a site request log by its unique ID.",
                 "responses": {
                     "200": {
                         "description": "Execution",
@@ -26539,7 +26539,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Delete a site log by its unique ID.",
                 "responses": {
                     "204": {
                         "description": "No content"
@@ -26602,7 +26602,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Get usage metrics and statistics for a for a specific site. View statistics including total deployments, builds, executions, storage usage, and compute time. The response includes both current totals and historical data for each metric. Use the optional range parameter to specify the time window for historical data: 24h (last 24 hours), 30d (last 30 days), or 90d (last 90 days). If not specified, defaults to 30 days.",
                 "responses": {
                     "200": {
                         "description": "UsageSite",
@@ -26683,7 +26683,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Get a list of all variables of a specific site.",
                 "responses": {
                     "200": {
                         "description": "Variables List",
@@ -26741,7 +26741,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Create a new site variable. These variables can be accessed during build and runtime (server-side rendering) as environment variables.",
                 "responses": {
                     "201": {
                         "description": "Variable",
@@ -26831,7 +26831,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Get a variable by its unique ID.",
                 "responses": {
                     "200": {
                         "description": "Variable",
@@ -26899,7 +26899,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Update variable by its unique ID.",
                 "responses": {
                     "200": {
                         "description": "Variable",
@@ -26996,7 +26996,7 @@
                 "tags": [
                     "sites"
                 ],
-                "description": "",
+                "description": "Delete a variable by its unique ID.",
                 "responses": {
                     "204": {
                         "description": "No content"
