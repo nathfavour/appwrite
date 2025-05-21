@@ -5,14 +5,17 @@ namespace Appwrite\Utopia\Database\Validator\Queries;
 use Utopia\Config\Config;
 use Utopia\Database\Database;
 use Utopia\Database\Document;
+use Utopia\Database\Exception\Query as QueryException;
+use Utopia\Database\QueryContext;
 use Utopia\Database\Validator\Queries;
+use Utopia\Database\Validator\Queries\V2 as DocumentsValidator;
 use Utopia\Database\Validator\Query\Cursor;
-use Utopia\Database\Validator\Query\Filter;
+//use Utopia\Database\Validator\Query\Filter;
 use Utopia\Database\Validator\Query\Limit;
 use Utopia\Database\Validator\Query\Offset;
-use Utopia\Database\Validator\Query\Order;
+//use Utopia\Database\Validator\Query\Order;
 
-class Base extends Queries
+class Base extends DocumentsValidator
 {
     /**
      * Expression constructor
@@ -34,57 +37,26 @@ class Base extends Queries
         );
 
         $collection = $collections[$collection];
-        // array for constant lookup time
-        $allowedAttributesLookup = [];
-        foreach ($allowedAttributes as $attribute) {
-            $allowedAttributesLookup[$attribute] = true;
-        }
+
+        $collection = new Document($collection);
 
         $attributes = [];
+
         foreach ($collection['attributes'] as $attribute) {
-            $key = $attribute['$id'];
-
-            if (!isset($allowedAttributesLookup[$key])) {
-                continue;
+            if (in_array($attribute['$id'], $allowedAttributes)){
+                $attributes[] = $attribute;
             }
-
-            $attributes[] = new Document([
-                'key' => $key,
-                'type' => $attribute['type'],
-                'array' => $attribute['array'],
-            ]);
         }
 
-        $attributes[] = new Document([
-            'key' => '$id',
-            'type' => Database::VAR_STRING,
-            'array' => false,
-        ]);
-        $attributes[] = new Document([
-            'key' => '$createdAt',
-            'type' => Database::VAR_DATETIME,
-            'array' => false,
-        ]);
-        $attributes[] = new Document([
-            'key' => '$updatedAt',
-            'type' => Database::VAR_DATETIME,
-            'array' => false,
-        ]);
+        $collection->setAttribute('attributes', $attributes);
 
-        $internalId = new Document([
-            'key' => '$internalId',
-            'type' => Database::VAR_STRING,
-            'array' => false,
-        ]);
+        $context = new QueryContext;
+        $context->add($collection);
+        var_dump($collection);
 
-        $validators = [
-            new Limit(),
-            new Offset(),
-            new Cursor(),
-            new Filter($attributes, APP_DATABASE_QUERY_MAX_VALUES),
-            new Order([...$attributes, $internalId]),
-        ];
-
-        parent::__construct($validators);
+        parent::__construct(
+            $context,
+            maxQueriesCount: APP_DATABASE_QUERY_MAX_VALUES
+        );
     }
 }
