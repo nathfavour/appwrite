@@ -708,28 +708,6 @@ App::shutdown()
 
         $responsePayload = $response->getPayload();
 
-        // for bulk api
-        if (isset($responsePayload['documents'])) {
-            $documentsForEventQueue = [];
-            $permissions = [];
-        
-            foreach ($responsePayload['documents'] as $docArray) {
-                $document = new Document($docArray);
-        
-                if (!empty($document->getRead())) {
-                    $documentsForEventQueue[] = $document;
-                    $permissions = array_merge($permissions, $document->getPermissions());
-                }
-            }
-        
-            $permissions = array_values(array_unique($permissions));
-        
-            $documentsForEventQueue = new Document($documentsForEventQueue);
-            $documentsForEventQueue->setAttribute('$permissions', $permissions);
-            
-            $responsePayload = $documentsForEventQueue->getArrayCopy();
-        }
-
         if (!empty($queueForEvents->getEvent())) {
             if (empty($queueForEvents->getPayload())) {
                 $queueForEvents->setPayload($responsePayload);

@@ -249,7 +249,7 @@ class Realtime extends MessagingAdapter
      * Create channels array based on the event name and payload.
      *
      * @param string $event
-     * @param Document $payload
+     * @param array<Document> $payload
      * @param Document|null $project
      * @param Document|null $database
      * @param Document|null $collection
@@ -257,7 +257,7 @@ class Realtime extends MessagingAdapter
      * @return array
      * @throws \Exception
      */
-    public static function fromPayload(string $event, Document $payload, Document $project = null, Document $database = null, Document $collection = null, Document $bucket = null): array
+    public static function fromPayload(string $event, array $payload, Document $project = null, Document $database = null, Document $collection = null, Document $bucket = null): array
     {
         $channels = [];
         $roles = [];
@@ -317,11 +317,16 @@ class Realtime extends MessagingAdapter
                     $channels[] = 'databases.' . $database->getId() . '.tables.' . $payload->getAttribute('$tableId') . '.rows.' . $payload->getId();
 
                     $channels[] = 'documents';
-                    $channels[] = 'databases.' . $database->getId() .  '.collections.' . $payload->getAttribute('$collectionId') . '.documents';
-                    $channels[] = 'databases.' . $database->getId() . '.collections.' . $payload->getAttribute('$collectionId') . '.documents.' . $payload->getId();
-
+                    $channels[] = 'databases.' . $database->getId() .  '.collections.' . $payload[0]->getAttribute('$collectionId') . '.documents';
+                    if (count($payload) === 1) {
+                        $channels[] = 'databases.' . $database->getId() . '.collections.' . $payload[0]->getAttribute('$collectionId') . '.documents.' . $payload[0]->getId();
+                    }
+                    $payloadReads = [];
+                    foreach ($payload as $document) {
+                        $payloadReads = \array_merge($payloadReads, $document->getRead());
+                    }
                     $roles = $collection->getAttribute('documentSecurity', false)
-                        ? \array_merge($collection->getRead(), $payload->getRead())
+                        ? \array_merge($collection->getRead(), $payloadReads)
                         : $collection->getRead();
                 }
                 break;
@@ -330,6 +335,7 @@ class Realtime extends MessagingAdapter
                     if ($bucket->isEmpty()) {
                         throw new \Exception('Bucket needs to be passed to Realtime for File events in the Storage.');
                     }
+                    $payload = $payload[0];
                     $channels[] = 'files';
                     $channels[] = 'buckets.' . $payload->getAttribute('bucketId') . '.files';
                     $channels[] = 'buckets.' . $payload->getAttribute('bucketId') . '.files.' . $payload->getId();
@@ -342,6 +348,7 @@ class Realtime extends MessagingAdapter
                 break;
             case 'functions':
                 if ($parts[2] === 'executions') {
+                    $payload = $payload[0];
                     if (!empty($payload->getRead())) {
                         $channels[] = 'console';
                         $channels[] = 'projects.' . $project->getId();
