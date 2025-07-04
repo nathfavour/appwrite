@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "352e436039af96702464acfb5e3e0591",
+    "content-hash": "ba7d3274a7bf67b757db33c74b4ca96a",
     "packages": [
         {
             "name": "adhocore/jwt",
@@ -69,16 +69,16 @@
         },
         {
             "name": "appwrite-labs/php-amqplib",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/appwrite-labs/php-amqplib.git",
-                "reference": "bd380cbd63c8c0f063a3893b7a0b889d40876861"
+                "reference": "c8e043045388ddad5ddab5f48df2b9046ca6873f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/appwrite-labs/php-amqplib/zipball/bd380cbd63c8c0f063a3893b7a0b889d40876861",
-                "reference": "bd380cbd63c8c0f063a3893b7a0b889d40876861",
+                "url": "https://api.github.com/repos/appwrite-labs/php-amqplib/zipball/c8e043045388ddad5ddab5f48df2b9046ca6873f",
+                "reference": "c8e043045388ddad5ddab5f48df2b9046ca6873f",
                 "shasum": ""
             },
             "require": {
@@ -156,9 +156,9 @@
                 "swoole"
             ],
             "support": {
-                "source": "https://github.com/appwrite-labs/php-amqplib/tree/0.1.1"
+                "source": "https://github.com/appwrite-labs/php-amqplib/tree/0.1.2"
             },
-            "time": "2025-06-24T18:12:57+00:00"
+            "time": "2025-07-04T20:54:22+00:00"
         },
         {
             "name": "appwrite/appwrite",
@@ -4266,20 +4266,20 @@
         },
         {
             "name": "utopia-php/queue",
-            "version": "0.12.0",
+            "version": "dev-fix-amqp",
             "source": {
                 "type": "git",
                 "url": "https://github.com/utopia-php/queue.git",
-                "reference": "3a7603ee712c592bfc54af4a76f0426c428b5574"
+                "reference": "1185ef27d9587946a4f0ad720e6dc83729266383"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/utopia-php/queue/zipball/3a7603ee712c592bfc54af4a76f0426c428b5574",
-                "reference": "3a7603ee712c592bfc54af4a76f0426c428b5574",
+                "url": "https://api.github.com/repos/utopia-php/queue/zipball/1185ef27d9587946a4f0ad720e6dc83729266383",
+                "reference": "1185ef27d9587946a4f0ad720e6dc83729266383",
                 "shasum": ""
             },
             "require": {
-                "appwrite-labs/php-amqplib": "^0.1",
+                "appwrite-labs/php-amqplib": "0.1.*",
                 "php": ">=8.3",
                 "utopia-php/cli": "0.15.*",
                 "utopia-php/fetch": "0.4.*",
@@ -4326,9 +4326,9 @@
             ],
             "support": {
                 "issues": "https://github.com/utopia-php/queue/issues",
-                "source": "https://github.com/utopia-php/queue/tree/0.12.0"
+                "source": "https://github.com/utopia-php/queue/tree/fix-amqp"
             },
-            "time": "2025-06-24T18:58:38+00:00"
+            "time": "2025-07-04T20:55:31+00:00"
         },
         {
             "name": "utopia-php/registry",
@@ -8249,9 +8249,18 @@
             "time": "2024-03-07T20:33:40+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "utopia-php/queue",
+            "version": "dev-fix-amqp",
+            "alias": "0.12.0",
+            "alias_normalized": "0.12.0.0"
+        }
+    ],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "utopia-php/queue": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
