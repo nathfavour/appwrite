@@ -928,8 +928,7 @@ class RealtimeCustomClientTest extends Scope
         $this->assertEquals('event', $response['type']);
         $this->assertNotEmpty($response['data']);
         $this->assertArrayHasKey('timestamp', $response['data']);
-        // 2 since the bulk api will not be having document id
-        $this->assertCount(2, $response['data']['channels']);
+        $this->assertCount(4, $response['data']['channels']);
         $this->assertContains("databases.{$databaseId}.collections.{$actorsId}.documents.create", $response['data']['events']);
         $this->assertContains("databases.*.collections.*.documents.create", $response['data']['events']);
         $this->assertContains("databases.{$databaseId}.collections.*.documents.create", $response['data']['events']);
@@ -980,7 +979,7 @@ class RealtimeCustomClientTest extends Scope
         $this->assertEquals('event', $response['type']);
         $this->assertNotEmpty($response['data']);
         $this->assertArrayHasKey('timestamp', $response['data']);
-        $this->assertCount(2, $response['data']['channels']);
+        $this->assertCount(4, $response['data']['channels']);
         $this->assertContains("databases.{$databaseId}.collections.{$actorsId}.documents.update", $response['data']['events']);
         $this->assertContains("databases.*.collections.*.documents.update", $response['data']['events']);
         $this->assertContains("databases.{$databaseId}.collections.{$actorsId}.documents", $response['data']['events']);
@@ -1011,7 +1010,7 @@ class RealtimeCustomClientTest extends Scope
         $this->assertEquals('event', $response['type']);
         $this->assertNotEmpty($response['data']);
         $this->assertArrayHasKey('timestamp', $response['data']);
-        $this->assertCount(2, $response['data']['channels']);
+        $this->assertCount(4, $response['data']['channels']);
         $this->assertContains("databases.{$databaseId}.collections.{$actorsId}.documents.delete", $response['data']['events']);
         $this->assertContains("databases.*.collections.*.documents.delete", $response['data']['events']);
         $this->assertContains("databases.{$databaseId}.collections.{$actorsId}.documents", $response['data']['events']);

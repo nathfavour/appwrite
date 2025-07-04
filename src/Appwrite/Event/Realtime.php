@@ -73,16 +73,7 @@ class Realtime extends Event
         }
 
         $allEvents = Event::generateEvents($this->getEvent(), $this->getParams());
-        $responsePayload = $this->getPayload();
-        $payload = (isset($responsePayload['documents'], $responsePayload['total']))
-            ? $responsePayload['documents']
-            : [$responsePayload];
-
-        if (empty($payload)) {
-            $payload = [new Document([])];
-        } else {
-            $payload = \array_map(fn ($item) => new Document($item), $payload);
-        }
+        $payload = new Document($this->getPayload());
 
         $db = $this->getContext('database');
         $bucket = $this->getContext('bucket');
