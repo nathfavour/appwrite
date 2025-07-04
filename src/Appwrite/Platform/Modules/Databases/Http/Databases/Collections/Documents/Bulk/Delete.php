@@ -44,6 +44,7 @@ class Delete extends Action
             ->groups(['api', 'database'])
             ->label('scope', 'documents.write')
             ->label('resourceType', RESOURCE_TYPE_DATABASES)
+            ->label('event','databases.[databaseId].collections.[collectionId].documents.delete')
             ->label('audits.event', 'documents.delete')
             ->label('audits.resource', 'database/{request.databaseId}/collection/{request.collectionId}')
             ->label('abuse-key', 'ip:{ip},method:{method},url:{url},userId:{userId}')
@@ -129,7 +130,6 @@ class Delete extends Action
             ->addMetric(str_replace('{databaseInternalId}', $database->getSequence(), METRIC_DATABASE_ID_OPERATIONS_WRITES), \max(1, $modified));
 
         $queueForEvents
-            ->setEvent('databases.[databaseId].collections.[collectionId].documents.delete')
             ->setParam('databaseId', $databaseId)
             ->setParam('collectionId', $collection->getId())
             ->setContext('collection', $collection)

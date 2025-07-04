@@ -47,6 +47,7 @@ class Update extends Action
             ->groups(['api', 'database'])
             ->label('scope', 'documents.write')
             ->label('resourceType', RESOURCE_TYPE_DATABASES)
+            ->label('event','databases.[databaseId].collections.[collectionId].documents.update')
             ->label('audits.event', 'documents.update')
             ->label('audits.resource', 'database/{request.databaseId}/collection/{request.collectionId}')
             ->label('abuse-key', 'ip:{ip},method:{method},url:{url},userId:{userId}')
@@ -151,7 +152,6 @@ class Update extends Action
             ->addMetric(str_replace('{databaseInternalId}', $database->getSequence(), METRIC_DATABASE_ID_OPERATIONS_WRITES), \max(1, $modified));
 
         $queueForEvents
-            ->setEvent('databases.[databaseId].collections.[collectionId].documents.update')
             ->setParam('databaseId', $databaseId)
             ->setParam('collectionId', $collection->getId())
             ->setContext('collection', $collection)
