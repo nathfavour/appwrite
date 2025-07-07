@@ -900,7 +900,8 @@ class RealtimeCustomClientTest extends Scope
         $documents = $this->client->call(Client::METHOD_POST, "/databases/{$databaseId}/collections/{$actorsId}/documents", array_merge([
             'content-type' => 'application/json',
             'x-appwrite-project' => $this->getProject()['$id'],
-        ], $this->getHeaders()), [
+            'x-appwrite-key' => $this->getProject()['apiKey']
+        ]), [
             'documents' => [
                 [
                     '$id' => ID::unique(),
@@ -967,7 +968,8 @@ class RealtimeCustomClientTest extends Scope
         $response = $this->client->call(Client::METHOD_PATCH, '/databases/' . $databaseId . '/collections/' . $actorsId . '/documents/', array_merge([
             'content-type' => 'application/json',
             'x-appwrite-project' => $this->getProject()['$id'],
-        ], $this->getHeaders()), [
+            'x-appwrite-key' => $this->getProject()['apiKey']
+        ]), [
             'data' => [
                 'name' => 'Marvel Hero'
             ],
@@ -1001,7 +1003,8 @@ class RealtimeCustomClientTest extends Scope
         $response = $this->client->call(Client::METHOD_DELETE, "/databases/{$databaseId}/collections/{$actorsId}/documents", array_merge([
             'content-type' => 'application/json',
             'x-appwrite-project' => $this->getProject()['$id'],
-        ], $this->getHeaders()));
+            'x-appwrite-key' => $this->getProject()['apiKey']
+        ]));
 
         $this->assertEquals(200, $response['headers']['status-code']);
         $response = json_decode($client->receive(), true);
